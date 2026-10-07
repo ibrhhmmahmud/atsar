@@ -1,24 +1,11 @@
-# Upgrade Atsar V1 → V2 di GitHub
+# Upgrade dari Atsar V2.0 ke V2.1
 
-1. **Backup dulu data V1** dari aplikasi jika ada data penting.
-2. Download dan ekstrak ZIP Atsar V2.
-3. Di repository GitHub lama, upload/replace file berikut di root:
-   - `index.html`
-   - `manifest.webmanifest`
-   - `service-worker.js`
-   - folder `css/`
-   - folder `js/`
-   - folder `assets/`
-   - `README.md`
-4. Pastikan struktur bukan `repo/atsar-v2/index.html`, tetapi `repo/index.html`.
-5. Commit changes.
-6. Tunggu GitHub Pages deploy ulang.
-7. Buka Atsar, lalu refresh sekali. Jika cache PWA lama masih muncul, tutup-buka aplikasi atau lakukan hard refresh.
+1. Sebelum upgrade, buka V2.0 → Profil → Data & Backup → Buat Backup JSON.
+2. Ekstrak `Atsar-V2.1-GitHub-PWA.zip`.
+3. Upload seluruh isi folder ke root repository dan timpa file lama.
+4. Pastikan file HTML baru ikut ter-upload, terutama `statistik.html`, `murojaah.html`, dan `profil.html`.
+5. Commit perubahan.
+6. Tunggu GitHub Pages selesai deploy.
+7. Jika browser masih menampilkan V2.0, refresh keras atau tutup-buka PWA. Service worker V2.1 memakai cache baru `atsar-v2.1.0`.
 
-## Migrasi data
-
-Jika V1 dan V2 dibuka pada domain GitHub Pages yang sama dan browser/perangkat yang sama, V2 akan mencoba memindahkan data lama dari localStorage ke IndexedDB secara otomatis pada pembukaan pertama.
-
-## Cache
-
-Service worker V2 menggunakan cache `atsar-v2.0.0`. Jika UI lama masih tertahan, buka URL GitHub Pages dari browser, refresh, lalu buka PWA lagi.
+Data IndexedDB lama tetap berada pada origin/domain GitHub Pages yang sama.

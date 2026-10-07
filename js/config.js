@@ -8,8 +8,7 @@ window.ATSAR_DEFAULTS = {
   reminderEnabled: true,
   reminderTime: "09:00",
   qadhaInitial: 0,
-  quranDailyTarget: 5,
-  murojaahDailyTarget: 10,
+  murojaahDailyTarget: 1,
   googleDriveClientId: "",
   prayerTimes: {
     subuh: "04:44",
@@ -41,12 +40,10 @@ window.ATSAR_DEFAULTS = {
   dzikirTargets: { pagi: 100, petang: 100 },
   targets: {
     prayer5: true,
-    tilawah: true,
-    tilawahPages: 5,
     dzikirPagi: false,
     dhuha: false,
-    murojaah: false,
-    murojaahAyat: 10
+    murojaah: true,
+    murojaahSessions: 1
   },
   customHabits: []
 };

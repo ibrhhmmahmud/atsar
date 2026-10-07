@@ -1,56 +1,45 @@
-# Atsar V2 — GitHub PWA
+# Atsar V2.1
 
-Atsar adalah web app/PWA pencatat ibadah pribadi yang berjalan di GitHub Pages. Source code ada di GitHub, sedangkan data ibadah tetap berada di browser/perangkat pengguna melalui IndexedDB.
+Atsar adalah PWA tracker ibadah personal yang bisa di-host gratis di GitHub Pages. Data utama tetap tersimpan lokal di perangkat melalui IndexedDB; GitHub hanya menyimpan source code.
 
-## Fitur V2
+## Perubahan V2.1
 
-- Home + waktu shalat manual, ringkasan dan target harian
-- Shalat wajib + Sendiri/Jamaah/Jamaah di Masjid
-- Rawatib, Dhuha, Tahajud, Witir
-- Puasa sunnah/wajib/qadha + perhitungan sisa qadha
-- Dzikir pagi/petang dengan counter
-- Ibadah custom: checklist atau counter
-- Qur'an Center: tilawah, riwayat bacaan, progress khatam, dan rekap total halaman
-- Murojaah tracking dengan kualitas Lemah/Cukup/Baik/Lancar
-- Jadwal murojaah otomatis sederhana (1/3/7/14 hari)
-- Statistik 30 hari + heatmap + breakdown per shalat
-- Target & streak terpisah untuk target utama, tilawah, dan murojaah
-- Kalender aktivitas bulanan
-- Jurnal/refleksi harian
-- Kumpulan doa dengan transliterasi Indonesia
-- Dark mode dan personalisasi nama/warna/lokasi
-- Backup/restore JSON: merge atau replace
-- Migrasi otomatis data Atsar V1 dari localStorage ke IndexedDB
-- PWA/offline cache
+- Fitur Tilawah dihapus dari seluruh antarmuka, target, statistik, aktivitas, dan navigasi.
+- Murojaah sekarang punya dua mode pencatatan: **Surah** dan **Juz**.
+- Statistik diperbaiki dan dipindah menjadi halaman HTML mandiri: `statistik.html`.
+- Menu utama dan menu Profil memakai halaman HTML nyata, bukan hanya route internal JavaScript.
+- Bottom navigation: Home, Ibadah, Murojaah, Aktivitas, Profil.
+- Statistik murojaah mencakup sesi, ayat, halaman, jumlah surah, dan jumlah juz yang disentuh.
+- Data/backup V2 lama tetap kompatibel.
 
-## Penyimpanan data
+## Struktur halaman
 
-- `localStorage`: pengaturan ringan (nama, tema, target, waktu shalat)
-- `IndexedDB`: hari ibadah, sesi tilawah, sesi murojaah, jurnal
-- GitHub: hanya source code aplikasi
+- `index.html` — Home
+- `ibadah.html` — Ibadah
+- `murojaah.html` — Murojaah Surah/Juz
+- `aktivitas.html` — Aktivitas
+- `profil.html` — Dashboard Profil & Pengaturan
+- `statistik.html` — Statistik Ibadah
+- `target-streak.html` — Target & Streak
+- `kalender.html` — Kalender Ibadah
+- `qadha.html` — Qadha Puasa
+- `doa.html` — Kumpulan Doa
+- `ibadah-custom.html` — Ibadah Custom
+- `personalisasi.html` — Personalisasi
+- `waktu-shalat.html` — Waktu Shalat
+- `tampilan.html` — Tampilan
+- `backup.html` — Data & Backup
 
-Data tidak otomatis masuk ke repository GitHub.
+## Upload ke GitHub
 
-## Deploy ke GitHub Pages
+Ekstrak ZIP, lalu upload **semua isi folder** ke root repo GitHub. File `index.html` harus berada langsung di root repository.
 
-1. Upload semua isi folder ini ke root repository. `index.html` harus langsung terlihat di root.
-2. Buka **Settings → Pages**.
-3. Source: **Deploy from a branch**.
-4. Branch: `main`, folder: `/ (root)`.
-5. Simpan dan tunggu GitHub Pages selesai deploy.
+GitHub Pages: `Settings → Pages → Deploy from a branch → main → /(root)`.
 
-## Update dari Atsar V1
+## Data
 
-Ganti file lama dengan file V2 ini. Saat pertama dibuka, V2 mencoba memigrasikan setting dan catatan harian V1 (`atsar.settings.v1` dan `atsar.days.v1`) secara otomatis di browser yang sama.
+- Settings: `localStorage`
+- Data harian, murojaah, jurnal: `IndexedDB`
+- Backup/restore: JSON
 
-Sebelum update sebaiknya tetap buat backup dari V1 jika tersedia.
-
-## Google Drive
-
-Versi ini sudah memiliki format backup JSON yang cocok untuk disimpan di Google Drive. Integrasi otomatis Drive belum diaktifkan karena GitHub Pages milik setiap pengguna memerlukan Google OAuth Client ID yang dikonfigurasi untuk origin/domain GitHub Pages tersebut.
-
-Untuk sekarang: **Profil → Data & Backup → Buat Backup JSON**, lalu simpan file JSON ke Drive. Restore melalui **Pulihkan dari Backup**.
-
-## Editable
-
-Konfigurasi default ada di `js/config.js`. Semua source HTML/CSS/JS bebas diedit. Nama aplikasi, nama panggilan, tagline, lokasi, warna utama, target, dan waktu shalat juga bisa diubah lewat UI.
+Catatan: store lama bernama `tilawah` masih dipertahankan secara internal agar backup V2.0 tidak rusak, tetapi V2.1 tidak menampilkan maupun menulis data Tilawah baru.
