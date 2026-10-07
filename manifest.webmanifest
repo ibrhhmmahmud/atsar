@@ -1,0 +1,13 @@
+{
+  "name": "Atsar — Jejak Ibadah",
+  "short_name": "Atsar",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f4ef",
+  "theme_color": "#195d63",
+  "description": "Tracker ibadah, tilawah, khatam, dan murojaah yang privat dan editable.",
+  "icons": [
+    {"src":"assets/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
